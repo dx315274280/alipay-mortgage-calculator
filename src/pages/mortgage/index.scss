@@ -1,0 +1,1167 @@
+$color-primary: #1677ff;
+$color-primary-dark: #0958d9;
+$color-primary-mid: #4096ff;
+$color-primary-light: #e6f4ff;
+$color-text: #1a1a1a;
+$color-text-secondary: #8c8c8c;
+$color-text-muted: #b2b2b2;
+$color-bg: #f4f6f8;
+$color-card: #ffffff;
+$color-border: #ebebeb;
+$color-table-header: #f7f8fa;
+$color-table-stripe: #fafbfc;
+$color-ad-bg: #ececec;
+$color-ad-border: #d8d8d8;
+$radius-lg: 24rpx;
+$radius-md: 16rpx;
+$radius-sm: 12rpx;
+
+// ── 自定义导航栏：CSS 变量驱动（值来自 getSystemInfoSync，安卓/iPhone 均可靠） ──
+.custom-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: $color-primary;
+  box-sizing: border-box;
+}
+
+.status-bar {
+  width: 100%;
+  height: var(--status-bar-height, 20px);
+  min-height: 20px;
+  flex-shrink: 0;
+}
+
+.nav-content {
+  width: 100%;
+  height: var(--nav-bar-height, 44px);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.nav-title {
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.navbar-placeholder {
+  width: 100%;
+  height: var(--navbar-total-height, 64px);
+  min-height: 64px;
+  flex-shrink: 0;
+}
+
+.calc {
+  min-height: 100vh;
+  padding: 24rpx 32rpx 0;
+  background-color: $color-bg;
+  box-sizing: border-box;
+
+  // 支付宝使用系统导航栏，顶部留白单独加大
+  &--alipay {
+    padding-top: 48rpx;
+  }
+
+  // ── 大分类 Tab ──
+  &__category-tabs {
+    display: flex;
+    gap: 16rpx;
+    margin-bottom: 24rpx;
+  }
+
+  &__category-tab {
+    flex: 1;
+    height: 88rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-card;
+    border-radius: $radius-lg;
+    border: 2rpx solid transparent;
+    box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+    transition: all 0.25s ease;
+
+    &--active {
+      border-color: $color-primary;
+      background: linear-gradient(135deg, rgba(7, 193, 96, 0.08) 0%, rgba(7, 193, 96, 0.04) 100%);
+      box-shadow: 0 6rpx 20rpx rgba(7, 193, 96, 0.18);
+    }
+  }
+
+  &__category-tab-text {
+    font-size: 30rpx;
+    font-weight: 500;
+    color: $color-text-secondary;
+
+    .calc__category-tab--active & {
+      color: $color-primary-dark;
+      font-weight: 700;
+    }
+  }
+
+  // ── 房贷子类型 Tab ──
+  &__sub-tabs {
+    display: flex;
+    gap: 12rpx;
+    margin-bottom: 24rpx;
+    padding: 8rpx;
+    background-color: $color-card;
+    border-radius: $radius-lg;
+    box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+  }
+
+  &__sub-tab {
+    flex: 1;
+    height: 64rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-sm;
+    transition: all 0.2s ease;
+
+    &--active {
+      background-color: $color-primary-light;
+    }
+  }
+
+  &__sub-tab-text {
+    font-size: 24rpx;
+    color: $color-text-secondary;
+    white-space: nowrap;
+
+    .calc__sub-tab--active & {
+      color: $color-primary-dark;
+      font-weight: 600;
+    }
+  }
+
+  // ── 还款方式 Tab ──
+  &__tabs {
+    display: flex;
+    padding: 8rpx;
+    margin-bottom: 24rpx;
+    background-color: $color-card;
+    border-radius: $radius-lg;
+    box-shadow: 0 4rpx 24rpx rgba(0, 0, 0, 0.04);
+  }
+
+  &__tab {
+    flex: 1;
+    height: 72rpx;
+    line-height: 72rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: $color-text-secondary;
+    border-radius: $radius-md;
+    transition: all 0.25s ease;
+
+    &--active {
+      color: $color-card;
+      font-weight: 600;
+      background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+      box-shadow: 0 6rpx 16rpx rgba(7, 193, 96, 0.35);
+    }
+  }
+
+  // ── 表单 ──
+  &__form {
+    padding: 8rpx 32rpx;
+    margin-bottom: 24rpx;
+    background-color: $color-card;
+    border-radius: $radius-lg;
+    box-shadow: 0 4rpx 24rpx rgba(0, 0, 0, 0.04);
+  }
+
+  &__field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 104rpx;
+    border-bottom: 1rpx solid $color-border;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &--column {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 24rpx 0;
+    }
+  }
+
+  &__label {
+    flex-shrink: 0;
+    width: 180rpx;
+    font-size: 30rpx;
+    font-weight: 500;
+    color: $color-text;
+
+    &--block {
+      width: 100%;
+      margin-bottom: 20rpx;
+    }
+  }
+
+  &__input-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 72rpx;
+    padding: 0 8rpx 0 20rpx;
+    background-color: $color-bg;
+    border: 1rpx solid $color-border;
+    border-radius: $radius-sm;
+    overflow: hidden;
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 0;
+    height: 72rpx;
+    font-size: 30rpx;
+    color: $color-text;
+    text-align: right;
+  }
+
+  &__input-placeholder {
+    color: $color-text-muted;
+    font-size: 28rpx;
+  }
+
+  &__unit {
+    flex-shrink: 0;
+    padding: 0 16rpx;
+    margin-left: 8rpx;
+    height: 44rpx;
+    line-height: 44rpx;
+    font-size: 26rpx;
+    color: $color-text-muted;
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 8rpx;
+  }
+
+  &__picker {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 72rpx;
+  }
+
+  &__picker-value {
+    font-size: 30rpx;
+    color: $color-text;
+  }
+
+  &__picker-arrow {
+    margin-left: 8rpx;
+    font-size: 24rpx;
+    color: $color-text-muted;
+  }
+
+  // ── 车贷附加费用（勾选 + 自定义输入）──
+  &__fee-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16rpx;
+  }
+
+  &__fee-item {
+    display: flex;
+    align-items: center;
+    gap: 16rpx;
+    padding: 20rpx 24rpx;
+    background-color: $color-bg;
+    border-radius: $radius-md;
+    border: 2rpx solid transparent;
+    transition: all 0.2s ease;
+
+    &--active {
+      background-color: $color-primary-light;
+      border-color: rgba(7, 193, 96, 0.35);
+    }
+
+    &--disabled {
+      opacity: 0.72;
+    }
+  }
+
+  &__fee-check {
+    flex-shrink: 0;
+    width: 36rpx;
+    height: 36rpx;
+    border-radius: 8rpx;
+    border: 2rpx solid $color-border;
+    background-color: $color-card;
+    position: relative;
+
+    &--checked {
+      background-color: $color-primary;
+      border-color: $color-primary;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 6rpx;
+        left: 10rpx;
+        width: 10rpx;
+        height: 18rpx;
+        border: 3rpx solid $color-card;
+        border-top: none;
+        border-left: none;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &__fee-label {
+    flex-shrink: 0;
+    min-width: 148rpx;
+    font-size: 28rpx;
+    font-weight: 500;
+    color: $color-text;
+  }
+
+  &__fee-input-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 64rpx;
+    padding: 0 8rpx 0 16rpx;
+    background-color: $color-card;
+    border: 1rpx solid $color-border;
+    border-radius: $radius-sm;
+    overflow: hidden;
+    transition: all 0.2s ease;
+
+    &--disabled {
+      background-color: #f0f0f0;
+      border-color: #e4e4e4;
+    }
+  }
+
+  &__fee-input {
+    flex: 1;
+    min-width: 0;
+    height: 64rpx;
+    font-size: 28rpx;
+    color: $color-text;
+    text-align: right;
+  }
+
+  &__fee-input-placeholder {
+    color: $color-text-muted;
+    font-size: 26rpx;
+  }
+
+  &__fee-unit {
+    flex-shrink: 0;
+    margin-left: 8rpx;
+    padding: 0 8rpx;
+    font-size: 22rpx;
+    color: $color-text-muted;
+  }
+
+  // ── 提交按钮 ──
+  &__action-row {
+    display: flex;
+    gap: 16rpx;
+    align-items: stretch;
+    margin-bottom: 24rpx;
+  }
+
+  &__submit {
+    flex: 1;
+    height: 96rpx;
+    line-height: 96rpx;
+    margin-bottom: 0;
+    font-size: 32rpx;
+    font-weight: 600;
+    color: $color-card;
+    text-align: center;
+    border-radius: $radius-lg;
+    background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+    box-shadow: 0 8rpx 24rpx rgba(7, 193, 96, 0.4);
+
+    &:active {
+      opacity: 0.88;
+      transform: scale(0.98);
+    }
+  }
+
+  &__save-btn {
+    flex-shrink: 0;
+    width: 148rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4rpx;
+    border-radius: $radius-lg;
+    background-color: $color-card;
+    border: 2rpx solid rgba(7, 193, 96, 0.35);
+    box-shadow: 0 6rpx 20rpx rgba(7, 193, 96, 0.14);
+
+    &:active {
+      opacity: 0.88;
+      transform: scale(0.98);
+    }
+  }
+
+  &__save-btn-icon {
+    font-size: 36rpx;
+    line-height: 1;
+    color: #f5a623;
+  }
+
+  &__save-btn-text {
+    font-size: 22rpx;
+    font-weight: 600;
+    color: $color-primary-dark;
+    line-height: 1.2;
+  }
+
+  // ── 收藏小程序引导（fixed 悬浮，不占文档流） ──
+  &__favorite-guide {
+    position: fixed;
+    top: calc(var(--navbar-total-height, 64px) + 8px);
+    right: 30rpx;
+    left: auto;
+    z-index: 999;
+    display: flex;
+    align-items: flex-start;
+    gap: 12rpx;
+    max-width: 500rpx;
+    padding: 20rpx 24rpx;
+    border-radius: $radius-md;
+    background: rgba(22, 119, 255, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8rpx 28rpx rgba(22, 119, 255, 0.32);
+    animation: calc-fade-in 0.5s ease both;
+
+    // 指向右上角「...」胶囊的小三角
+    &::after {
+      content: '';
+      position: absolute;
+      top: -14rpx;
+      right: 36rpx;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 12rpx 14rpx 12rpx;
+      border-color: transparent transparent rgba(22, 119, 255, 0.92) transparent;
+    }
+
+    // 支付宝：top 由 JS inline style 注入（ACSS 对 calc(var()) 支持不稳定）
+    &--alipay {
+      right: 24rpx;
+      max-width: 460rpx;
+      padding: 18rpx 20rpx;
+      background: rgba(22, 119, 255, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 8rpx 24rpx rgba(22, 119, 255, 0.28);
+
+      &::after {
+        top: -12rpx;
+        right: 112rpx;
+        border-width: 0 10rpx 12rpx 10rpx;
+        border-color: transparent transparent rgba(22, 119, 255, 0.88) transparent;
+      }
+
+      .calc__favorite-guide-text {
+        font-size: 24rpx;
+        line-height: 1.55;
+        color: $color-card;
+      }
+
+      .calc__favorite-guide-close {
+        background-color: rgba(255, 255, 255, 0.22);
+      }
+
+      .calc__favorite-guide-close-icon {
+        color: $color-card;
+      }
+    }
+  }
+
+  &__favorite-guide-text {
+    flex: 1;
+    min-width: 0;
+    font-size: 22rpx;
+    line-height: 1.55;
+    color: $color-card;
+  }
+
+  &__favorite-guide-close {
+    flex-shrink: 0;
+    width: 40rpx;
+    height: 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.22);
+
+    &:active {
+      opacity: 0.75;
+    }
+  }
+
+  &__favorite-guide-close-icon {
+    font-size: 28rpx;
+    line-height: 1;
+    color: $color-card;
+  }
+
+  // ── 广告位 ──
+  &__ad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-ad-bg;
+    border: 2rpx dashed $color-ad-border;
+    border-radius: $radius-md;
+    overflow: hidden;
+
+    &--banner {
+      height: 160rpx;
+      margin-bottom: 32rpx;
+    }
+
+    &--grid {
+      height: 200rpx;
+      margin: 8rpx 24rpx 16rpx;
+    }
+  }
+
+  &__ad-text {
+    font-size: 26rpx;
+    color: $color-text-secondary;
+    text-align: center;
+  }
+
+  &__ad-sub {
+    margin-top: 8rpx;
+    font-size: 22rpx;
+    color: $color-text-muted;
+  }
+
+  // ── 结果区域（计算后淡入展示）──
+  &__result {
+    animation: calc-fade-in 0.4s ease both;
+    padding-bottom: 32rpx;
+  }
+
+  &__card {
+    padding: 40rpx 36rpx;
+    margin-bottom: 24rpx;
+    border-radius: $radius-lg;
+    background: linear-gradient(145deg, $color-primary 0%, $color-primary-mid 55%, $color-primary-dark 100%);
+    box-shadow: 0 12rpx 40rpx rgba(7, 193, 96, 0.35);
+
+    &--animate {
+      animation: calc-slide-up 0.45s ease 0.05s both;
+    }
+  }
+
+  &__card-label {
+    display: block;
+    margin-bottom: 12rpx;
+    font-size: 26rpx;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  &__card-amount {
+    display: block;
+    margin-bottom: 8rpx;
+    font-size: 64rpx;
+    font-weight: 700;
+    color: $color-card;
+    letter-spacing: 1rpx;
+  }
+
+  &__card-decrease {
+    display: block;
+    margin-bottom: 28rpx;
+    font-size: 24rpx;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  &__card-summary {
+    display: flex;
+    padding-top: 28rpx;
+    border-top: 1rpx solid rgba(255, 255, 255, 0.25);
+
+    & + & {
+      margin-top: 0;
+      padding-top: 20rpx;
+      border-top: 1rpx solid rgba(255, 255, 255, 0.15);
+    }
+
+    &--double {
+      .calc__card-item {
+        flex: 1;
+
+        &:first-child {
+          border-right: 1rpx solid rgba(255, 255, 255, 0.25);
+        }
+      }
+    }
+
+    &--triple {
+      .calc__card-item {
+        flex: 1;
+
+        &:not(:last-child) {
+          border-right: 1rpx solid rgba(255, 255, 255, 0.25);
+        }
+      }
+    }
+  }
+
+  &__card-item {
+    flex: 1;
+    text-align: center;
+
+    &:first-child {
+      border-right: 1rpx solid rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  &__card-item-label {
+    display: block;
+    margin-bottom: 8rpx;
+    font-size: 22rpx;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  &__card-item-value {
+    display: block;
+    font-size: 28rpx;
+    font-weight: 600;
+    color: $color-card;
+
+    &--highlight {
+      font-size: 32rpx;
+      font-weight: 700;
+    }
+  }
+
+  &__card-fee-note {
+    display: block;
+    margin-top: 16rpx;
+    font-size: 22rpx;
+    color: rgba(255, 255, 255, 0.65);
+    text-align: center;
+  }
+
+  // ── 还款明细表 ──
+  &__schedule {
+    overflow: hidden;
+    background-color: $color-card;
+    border-radius: $radius-lg;
+    box-shadow: 0 4rpx 24rpx rgba(0, 0, 0, 0.04);
+
+    &--animate {
+      animation: calc-slide-up 0.45s ease 0.15s both;
+    }
+  }
+
+  &__schedule-head {
+    padding: 36rpx 32rpx 28rpx;
+  }
+
+  &__schedule-title {
+    display: block;
+    font-size: 30rpx;
+    font-weight: 600;
+    color: $color-text;
+    line-height: 1.5;
+  }
+
+  &__table-header {
+    display: flex;
+    align-items: center;
+    padding: 20rpx 24rpx;
+    background-color: $color-table-header;
+    border-bottom: 1rpx solid $color-border;
+  }
+
+  &__th {
+    font-size: 22rpx;
+    font-weight: 500;
+    color: $color-text-secondary;
+    text-align: center;
+
+    &--period {
+      width: 80rpx;
+      flex-shrink: 0;
+    }
+
+    &--payment {
+      width: 148rpx;
+      flex-shrink: 0;
+    }
+
+    &--breakdown {
+      flex: 1;
+    }
+
+    &--remaining {
+      width: 148rpx;
+      flex-shrink: 0;
+    }
+  }
+
+  &__scroll-wrap {
+    width: 100%;
+    height: 720rpx;
+  }
+
+  &__scroll {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__schedule-lock {
+    border-top: 1rpx solid $color-border;
+
+    .calc__ad--grid {
+      margin: 0 24rpx 24rpx;
+    }
+  }
+
+  &__schedule-lock-mask {
+    padding: 40rpx 32rpx 24rpx;
+    text-align: center;
+    background: linear-gradient(
+      180deg,
+      rgba(244, 246, 248, 0.3) 0%,
+      rgba(244, 246, 248, 0.95) 40%,
+      #eef0f3 100%
+    );
+  }
+
+  &__schedule-lock-text {
+    display: block;
+    font-size: 28rpx;
+    font-weight: 600;
+    color: $color-text;
+    line-height: 1.5;
+  }
+
+  &__schedule-lock-hint {
+    display: block;
+    margin-top: 12rpx;
+    font-size: 24rpx;
+    color: $color-text-secondary;
+  }
+
+  &__table-row {
+    display: flex;
+    align-items: center;
+    padding: 24rpx;
+    border-bottom: 1rpx solid $color-border;
+
+    &--stripe {
+      background-color: $color-table-stripe;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__td {
+    font-size: 24rpx;
+    color: $color-text;
+    text-align: center;
+
+    &--period {
+      width: 80rpx;
+      flex-shrink: 0;
+      color: $color-text-secondary;
+    }
+
+    &--payment {
+      width: 148rpx;
+      flex-shrink: 0;
+      font-weight: 600;
+      color: $color-primary-dark;
+    }
+
+    &--breakdown {
+      flex: 1;
+      line-height: 1.5;
+    }
+
+    &--remaining {
+      width: 148rpx;
+      flex-shrink: 0;
+      font-size: 22rpx;
+      color: $color-text-secondary;
+    }
+  }
+
+  &__breakdown-principal {
+    display: block;
+    font-size: 22rpx;
+    color: $color-text;
+  }
+
+  &__breakdown-interest {
+    display: block;
+    font-size: 22rpx;
+    color: $color-text-secondary;
+  }
+
+  // ── 房贷功能模块 Tab ──
+  &__feature-tabs {
+    display: flex;
+    gap: 12rpx;
+    margin-bottom: 24rpx;
+    padding: 8rpx;
+    background-color: $color-card;
+    border-radius: $radius-lg;
+    box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+  }
+
+  &__feature-tab {
+    flex: 1;
+    height: 68rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-sm;
+    transition: all 0.2s ease;
+
+    &--active {
+      background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+      box-shadow: 0 4rpx 12rpx rgba(7, 193, 96, 0.3);
+    }
+  }
+
+  &__feature-tab-text {
+    font-size: 22rpx;
+    color: $color-text-secondary;
+    text-align: center;
+
+    .calc__feature-tab--active & {
+      color: $color-card;
+      font-weight: 600;
+    }
+  }
+
+  // ── 模式选择（LPR / 提前还款）──
+  &__mode-list {
+    width: 100%;
+    display: flex;
+    gap: 16rpx;
+  }
+
+  &__mode-item {
+    flex: 1;
+    height: 72rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-bg;
+    border-radius: $radius-sm;
+    border: 2rpx solid transparent;
+
+    &--active {
+      background-color: $color-primary-light;
+      border-color: rgba(7, 193, 96, 0.35);
+    }
+  }
+
+  &__mode-item-text {
+    font-size: 26rpx;
+    color: $color-text-secondary;
+
+    .calc__mode-item--active & {
+      color: $color-primary-dark;
+      font-weight: 600;
+    }
+  }
+
+  &__mode-hint {
+    display: block;
+    margin-top: 16rpx;
+    font-size: 22rpx;
+    color: $color-text-muted;
+  }
+
+  // ── LPR / 提前还款对比结果卡 ──
+  &__compare-card {
+    padding: 36rpx 32rpx 40rpx;
+    margin-bottom: 0;
+    border-radius: $radius-lg;
+    background: linear-gradient(145deg, $color-primary 0%, $color-primary-mid 55%, $color-primary-dark 100%);
+    box-shadow: 0 12rpx 40rpx rgba(7, 193, 96, 0.35);
+  }
+
+  &__compare-title {
+    display: block;
+    margin-bottom: 24rpx;
+    font-size: 32rpx;
+    font-weight: 700;
+    color: $color-card;
+  }
+
+  &__compare-subtitle {
+    display: block;
+    margin-top: 8rpx;
+    margin-bottom: 28rpx;
+    font-size: 24rpx;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__compare-highlight {
+    padding: 28rpx 24rpx;
+    margin-bottom: 28rpx;
+    text-align: center;
+    border-radius: $radius-md;
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  &__compare-highlight-label {
+    display: block;
+    font-size: 24rpx;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  &__compare-highlight-value {
+    display: block;
+    margin: 12rpx 0 8rpx;
+    font-size: 56rpx;
+    font-weight: 700;
+    color: $color-card;
+  }
+
+  &__compare-highlight-sub {
+    display: block;
+    font-size: 24rpx;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  &__compare-grid {
+    display: flex;
+    gap: 16rpx;
+  }
+
+  &__compare-col {
+    flex: 1;
+    padding: 24rpx 20rpx;
+    border-radius: $radius-md;
+    background-color: rgba(255, 255, 255, 0.12);
+
+    &--after {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &__compare-col-title {
+    display: block;
+    margin-bottom: 16rpx;
+    font-size: 24rpx;
+    font-weight: 600;
+    color: $color-card;
+    text-align: center;
+  }
+
+  &__compare-row-label {
+    display: block;
+    margin-top: 12rpx;
+    font-size: 22rpx;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  &__compare-row-value {
+    display: block;
+    margin-top: 4rpx;
+    font-size: 28rpx;
+    font-weight: 600;
+    color: $color-card;
+
+    &--highlight {
+      font-size: 30rpx;
+      font-weight: 700;
+    }
+  }
+
+  &__savings-banner {
+    padding: 28rpx 24rpx 32rpx;
+    margin-bottom: 28rpx;
+    text-align: center;
+    border-radius: $radius-md;
+    background-color: rgba(255, 255, 255, 0.18);
+    border: 2rpx solid rgba(255, 255, 255, 0.25);
+  }
+
+  &__savings-banner-label {
+    display: block;
+    font-size: 26rpx;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  &__savings-banner-value {
+    display: block;
+    margin-top: 20rpx;
+    font-size: 60rpx;
+    font-weight: 700;
+    line-height: 1.2;
+    color: $color-card;
+    letter-spacing: 1rpx;
+  }
+
+  // ── 高阶功能广告锁 ──
+  &__advanced-lock {
+    margin-bottom: 24rpx;
+    overflow: hidden;
+    border-radius: $radius-lg;
+    background-color: $color-card;
+    box-shadow: 0 4rpx 24rpx rgba(0, 0, 0, 0.04);
+
+    .calc__ad--grid {
+      margin: 0 24rpx 24rpx;
+    }
+  }
+
+  &__advanced-lock-mask {
+    padding: 48rpx 32rpx 28rpx;
+    text-align: center;
+    background: linear-gradient(180deg, $color-primary-light 0%, $color-bg 100%);
+  }
+
+  &__advanced-lock-text {
+    display: block;
+    font-size: 30rpx;
+    font-weight: 600;
+    color: $color-text;
+    line-height: 1.5;
+  }
+
+  &__advanced-lock-hint {
+    display: block;
+    margin-top: 12rpx;
+    font-size: 24rpx;
+    color: $color-text-secondary;
+  }
+
+  // 底部占位：小程序 page padding 不计入滚动高度，需用真实节点撑开
+  &__safe-bottom {
+    width: 100%;
+    height: calc(160rpx + constant(safe-area-inset-bottom));
+    height: calc(160rpx + env(safe-area-inset-bottom));
+    flex-shrink: 0;
+  }
+
+  // ── 结果区分享 / 海报 ──
+  &__result-actions {
+    display: flex;
+    gap: 16rpx;
+    margin-top: 8rpx;
+    margin-bottom: 8rpx;
+  }
+
+  &__result-share-btn {
+    flex: 1;
+    height: 88rpx;
+    line-height: 88rpx;
+    margin: 0;
+    padding: 0;
+    border: 2rpx solid rgba(7, 193, 96, 0.35) !important;
+    border-radius: $radius-lg;
+    background-color: $color-card !important;
+    box-shadow: 0 4rpx 16rpx rgba(7, 193, 96, 0.1);
+
+    &::after {
+      border: none;
+    }
+  }
+
+  &__result-share-btn-text {
+    font-size: 28rpx;
+    font-weight: 600;
+    color: $color-primary-dark;
+  }
+
+  &__result-poster-btn {
+    flex: 1;
+    height: 88rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8rpx;
+    border-radius: $radius-lg;
+    background: linear-gradient(135deg, rgba(7, 193, 96, 0.12) 0%, rgba(6, 173, 86, 0.18) 100%);
+    border: 2rpx solid rgba(7, 193, 96, 0.28);
+    box-shadow: 0 6rpx 20rpx rgba(7, 193, 96, 0.12);
+
+    &:active {
+      opacity: 0.88;
+      transform: scale(0.98);
+    }
+
+    &--disabled {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+  }
+
+  &__result-poster-btn-icon {
+    font-size: 30rpx;
+    line-height: 1;
+  }
+
+  &__result-poster-btn-text {
+    font-size: 26rpx;
+    font-weight: 600;
+    color: $color-primary-dark;
+  }
+
+  &__poster-canvas {
+    position: fixed;
+    left: -9999px;
+    top: 0;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+@keyframes calc-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes calc-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(24rpx);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

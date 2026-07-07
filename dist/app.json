@@ -1,0 +1,11 @@
+{
+  "pages": [
+    "pages/mortgage/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarTextStyle": "white",
+    "titleBarColor": "#1677FF",
+    "defaultTitle": "房贷计算器"
+  }
+}
